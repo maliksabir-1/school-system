@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Students;
+use App\Models\Student;
+use App\Models\Classes;
 
 class StudentController extends Controller
 {
@@ -14,7 +15,7 @@ class StudentController extends Controller
     public function index()
 
     {
-        $users= Students::get();
+        $users= Student::get();
         return view('students.index', compact('users'));
     }
 
@@ -23,7 +24,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        $classes = Student::all();
+        // dd($classes);
+        return view('students.create', compact('classes'));
     }
 
     /**
@@ -32,34 +35,29 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
-            'class' => 'required',
-            'dob' => 'required',
-            'cnic' => 'required',
-            'image' => 'required',
+            'name'      => 'required|string|max:255',
+            'email'     => 'required|email',
+            'phone'     => 'required|string|max:15',
+            'gender'    => 'required|string',
+            'address'   => 'required|string|max:255',
+            'class_id'  => 'required|exists:classes,id',
+            'dob'       => 'required|date',
+            'roll_no'       => 'required',
         ]);
 
-        $users=new Students();
-        $users->name = $request->name ;
-        $users->address = $request->address ;
-        $users->cnic = $request->cnic ;
-        $users->email = $request->email ;
-        $users->class = $request->class ;
-        $users->image = $request->image ;
-        $users->phone = $request->phone ;
-        $users->dob = $request->dob ;
+        $student = new Student();
+        // $student->user_id     = Auth::id();
+        $student->name        = $request->name;
+        $student->email       = $request->email;
+        $student->phone       = $request->phone;
+        $student->gender      = $request->gender;
+        $student->address     = $request->address;
+        $student->class_id    = $request->class_id; 
+        $student->dob         = $request->dob;
+        $student->roll_number = $request->roll_no;
+        $student->save();
 
-        if ($request->hasFile('image')) {
-    $fileName = time().'_'.$request->image->getClientOriginalName();
-    $filePath = $request->file('image')->storeAs('uploads', $fileName, 'public');
-    $users->image = $filePath;
-}
-        
-        $users->save();
-        return back()->with('Success','Users Store SuccessFully');
+        return redirect()->back()->with('success', 'Student created successfully.');
     }
 
     /**
@@ -67,7 +65,7 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-         $users = Students::count();
+         $users = Student::count();
 
     return view('dashboard', compact('users'));
     }
@@ -77,7 +75,7 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-         $users= Students::where('id' , $id)->first();
+         $users= Student::where('id' , $id)->first();
          return view('students.edit',compact('users'));
     }
 
@@ -86,35 +84,32 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-         $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'cnic' => 'required',
-            'email' => 'required',
-            'class' => 'required',
-            'image' => 'required',
-            'phone' => 'required',
-            'dob' => 'required',
+          $request->validate([
+            'name'      => 'required|string|max:255',
+            'email'     => 'required|email',
+            'phone'     => 'required|string|max:15',
+            'gender'    => 'required|string',
+            'address'   => 'required|string|max:255',
+            'class_id'  => 'required|exists:classes,id',
+            'dob'       => 'required|date',
+            'roll_no'   => 'required',
         ]);
 
-        $users= Students::where('id' , $id)->first();
-        $users->name = $request->name ;
-        $users->address = $request->address ;
-        $users->cnic = $request->cnic ;
-        $users->email = $request->email ;
-        $users->class = $request->class ;
-        $users->image = $request->image ;
-        $users->phone = $request->phone ;
-        $users->dob = $request->dob ;
+        $student= Student::where('id' , $id)->first();
+        // $student->user_id     = Auth::id();
+        $student->name        = $request->name;
+        $student->email       = $request->email;
+        $student->phone       = $request->phone;
+        $student->gender      = $request->gender;
+        $student->address     = $request->address;
+        $student->class_id    = $request->class_id; 
+        $student->dob         = $request->dob;
+        $student->roll_number = $request->roll_no;
+        $student->save();
 
-        if ($request->hasFile('image')) {
-    $fileName = time().'_'.$request->image->getClientOriginalName();
-    $filePath = $request->file('image')->storeAs('uploads', $fileName, 'public');
-    $users->image = $filePath;
-}
-        
-        $users->save();
-        return back()->with('Success','Users Update SuccessFully');
+        return redirect()->back()->with('success', 'Student created successfully.');
+
+       
     }
 
     /**
@@ -122,7 +117,7 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-         $users= Students::where('id' , $id)->first();
+         $users= Student::where('id' , $id)->first();
          $users->delete();
          return back()->with('Success','Users Delete SuccessFully');
 

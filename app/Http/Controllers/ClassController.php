@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\School;
+use App\Models\Classes;
 
 class ClassController extends Controller
 {
@@ -13,7 +13,7 @@ class ClassController extends Controller
     public function index()
     {
         
-         $users= School::get();
+         $users= Classes::get();
         return view('class.index', compact('users'));
     }
     
@@ -38,7 +38,7 @@ class ClassController extends Controller
     ]);
 
     // ✅ Create new attendance entry
-    $users= new School();
+    $users= new Classes();
     $users->name = $request->name;
     $users->section = $request->section;
     
@@ -60,7 +60,7 @@ class ClassController extends Controller
      */
     public function edit(string $id)
     {
-          $users= School::where('id' , $id)->first();
+          $users= Classes::where('id' , $id)->first();
          return view('class.edit',compact('users'));
     }
 
@@ -76,7 +76,7 @@ class ClassController extends Controller
     ]);
 
     // ✅ Create new attendance entry
-    $users= School::where('id' , $id)->first();
+    $users= Classes::where('id' , $id)->first();
     $users->name = $request->name;
     $users->section = $request->section;
     
@@ -90,7 +90,7 @@ class ClassController extends Controller
      */
     public function destroy(string $id)
     {
-         $users= School::where('id' , $id)->first();
+         $users= Classes::where('id' , $id)->first();
          $users->delete();
          return back()->with('Success','Users Delete SuccessFully');
     }
