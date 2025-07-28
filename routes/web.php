@@ -1,0 +1,93 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\ClassController;
+use App\Http\Controllers\ParentController;
+use App\Http\Controllers\SubjectController;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Auth Routes
+Route::get('register',[RegisterController::class,'create'])->name('register');
+Route::post('registerstore',[RegisterController::class,'register'])->name('registerpost');
+
+Route::get('login',[LoginController::class,'create'])->name('login');
+Route::post('loginstore',[LoginController::class,'login'])->name('loginpost');
+Route::get('dashboard',[LoginController::class,'index'])->name('dashboard');
+Route::get('logout',[LoginController::class,'logout'])->name('logout');
+
+// Profile Routes
+Route::get('profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile');
+Route::post('profile/{id}/update', [ProfileController::class, 'update'])->name('profile.update');
+
+
+Route::get('dashboard',[HomeController::class,'create'])->name('dashboard');
+
+
+// Students Routes
+Route::get('students/create',[StudentController::class,'create'])->name('students.create');
+Route::post('student/post',[StudentController::class,'store'])->name('student.post');
+Route::get('student/index',[StudentController::class,'index'])->name('students.index');
+Route::get('students/edit/{id}',[StudentController::class,'edit'])->name('students.edit');
+Route::post('students/update/{id}',[StudentController::class,'update'])->name('students.update');
+Route::get('students/delete/{id}',[StudentController::class,'destroy'])->name('students.delete');
+Route::get('students/show',[StudentController::class,'show'])->name('students.show');
+
+// Teachers Routes
+Route::get('teachers/create',[TeacherController::class,'create'])->name('teachers.create');
+Route::post('teachers/post',[TeacherController::class,'store'])->name('teachers.post');
+Route::get('teachers/index',[TeacherController::class,'index'])->name('teachers.index');
+Route::get('teachers/edit/{id}',[TeacherController::class,'edit'])->name('teachers.edit');
+Route::post('teachers/update/{id}',[TeacherController::class,'update'])->name('teachers.update');
+Route::get('teachers/delete/{id}',[TeacherController::class,'destroy'])->name('teachers.delete');
+
+
+Route::get('attendance/create',[AttendanceController::class,'create'])->name('attendance.create');
+Route::post('attendance/post',[AttendanceController::class,'store'])->name('attendance.post');
+Route::get('attendance/index',[AttendanceController::class,'index'])->name('attendance.index');
+Route::get('attendance/edit/{id}',[AttendanceController::class,'edit'])->name('attendance.edit');
+Route::post('attendance/update/{id}',[AttendanceController::class,'update'])->name('attendance.update');
+Route::get('attendance/delete/{id}',[AttendanceController::class,'destroy'])->name('attendance.delete');
+
+
+Route::get('class/create',[ClassController::class,'create'])->name('class.create');
+Route::post('class/post',[ClassController::class,'store'])->name('class.post');
+Route::get('class/index',[ClassController::class,'index'])->name('class.index');
+Route::get('class/edit/{id}',[ClassController::class,'edit'])->name('class.edit');
+Route::post('class/update/{id}',[ClassController::class,'update'])->name('class.update');
+Route::get('class/delete/{id}',[ClassController::class,'destroy'])->name('class.delete');
+
+
+Route::get('parent/create',[ParentController::class,'create'])->name('parent.create');
+Route::post('parent/post',[ParentController::class,'store'])->name('parent.post');
+Route::get('parent/index',[ParentController::class,'index'])->name('parent.index');
+Route::get('parent/edit/{id}',[ParentController::class,'edit'])->name('parent.edit');
+Route::post('parent/update/{id}',[ParentController::class,'update'])->name('parent.update');
+Route::get('parent/delete/{id}',[ParentController::class,'destroy'])->name('parent.delete');
+
+
+Route::get('subject/create',[SubjectController::class,'create'])->name('subject.create');
+Route::post('subject/post',[SubjectController::class,'store'])->name('subject.post');
+Route::get('subject/index',[SubjectController::class,'index'])->name('subject.index');
+Route::get('subject/edit/{id}',[SubjectController::class,'edit'])->name('subject.edit');
+Route::post('subject/update/{id}',[SubjectController::class,'update'])->name('subject.update');
+Route::get('subject/delete/{id}',[SubjectController::class,'destroy'])->name('subject.delete');
