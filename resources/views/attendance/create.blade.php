@@ -20,7 +20,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <div class="card-title">Attendance Entry</div>
+            <div class="card-title">Attendance Add</div>
           </div>
           <div class="card-body">
             <a href="{{ route('attendance.index') }}" class="btn btn-success mb-3">Show Students</a>
