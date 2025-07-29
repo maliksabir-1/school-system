@@ -42,7 +42,7 @@ class AttendanceController extends Controller
     $users->remarks = $request->remarks;
           
         $users->save();
-        return back()->with('Success','Users Store SuccessFully');
+        return back()->with('Success','Attendance Create SuccessFully');
     }
 
     /**
@@ -82,7 +82,7 @@ class AttendanceController extends Controller
     $users->remarks = $request->remarks;
             
         $users->save();
-        return back()->with('Success','Users Store SuccessFully');
+        return back()->with('Success','Attendance Update SuccessFully');
     }
 
     /**
@@ -92,7 +92,7 @@ class AttendanceController extends Controller
     {
         $users= Attendance::where('id' , $id)->first();
          $users->delete();
-         return back()->with('Success','Users Delete SuccessFully');
+         return back()->with('Success','Attendance Delete SuccessFully');
 
     }
 }

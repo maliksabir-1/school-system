@@ -28,13 +28,20 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <div class="card-title">Student Form</div>
+              <div class="card-title">Class Form</div>
+               @if (session('Success'))
+                    <div class="alert alert-success" role="alert">
+                      {{ session('Success') }}
+                    </div>
+                  @endif
             </div>
             <div class="card-body">
-              <a href="{{ route('class.index') }}" class="btn btn-success">Show Students</a>
+              <a href="{{ route('class.index') }}" class="btn btn-success">Show Classes</a>
               {{-- ✅ Form starts here --}}
               <form action="{{ route('class.post') }}" method="POST">
                 @csrf
+                
+
                 <div class="row">
                   <div class="col-md-6 col-lg-4">
                     <div class="form-group">

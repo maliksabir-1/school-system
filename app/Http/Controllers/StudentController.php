@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\Classes;
+use Illuminate\Support\Facades\Auth;
+
 
 class StudentController extends Controller
 {
@@ -24,7 +26,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $classes = Student::all();
+        $classes = Classes::all();
         // dd($classes);
         return view('students.create', compact('classes'));
     }
@@ -46,7 +48,7 @@ class StudentController extends Controller
         ]);
 
         $student = new Student();
-        // $student->user_id     = Auth::id();
+        $student->user_id     = Auth::id();
         $student->name        = $request->name;
         $student->email       = $request->email;
         $student->phone       = $request->phone;
@@ -76,15 +78,18 @@ class StudentController extends Controller
     public function edit(string $id)
     {
          $users= Student::where('id' , $id)->first();
-         return view('students.edit',compact('users'));
+         $classes = Classes::all();
+         return view('students.edit',compact('users','classes'));
     }
+   
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-          $request->validate([
+         $request->validate([
             'name'      => 'required|string|max:255',
             'email'     => 'required|email',
             'phone'     => 'required|string|max:15',
@@ -92,11 +97,11 @@ class StudentController extends Controller
             'address'   => 'required|string|max:255',
             'class_id'  => 'required|exists:classes,id',
             'dob'       => 'required|date',
-            'roll_no'   => 'required',
+            'roll_no'       => 'required',
         ]);
 
         $student= Student::where('id' , $id)->first();
-        // $student->user_id     = Auth::id();
+        $student->user_id     = Auth::id();
         $student->name        = $request->name;
         $student->email       = $request->email;
         $student->phone       = $request->phone;
@@ -107,7 +112,7 @@ class StudentController extends Controller
         $student->roll_number = $request->roll_no;
         $student->save();
 
-        return redirect()->back()->with('success', 'Student created successfully.');
+        return redirect()->back()->with('success', 'Student Update successfully.');
 
        
     }
@@ -120,6 +125,7 @@ class StudentController extends Controller
          $users= Student::where('id' , $id)->first();
          $users->delete();
          return back()->with('Success','Users Delete SuccessFully');
+         
 
     }
 }

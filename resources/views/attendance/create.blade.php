@@ -21,9 +21,14 @@
         <div class="card">
           <div class="card-header">
             <div class="card-title">Attendance Add</div>
+             @if (session('Success'))
+                    <div class="alert alert-success" role="alert">
+                      {{ session('Success') }}
+                    </div>
+                  @endif
           </div>
           <div class="card-body">
-            <a href="{{ route('attendance.index') }}" class="btn btn-success mb-3">Show Students</a>
+            <a href="{{ route('attendance.index') }}" class="btn btn-success mb-3">Show Attendance</a>
 
             {{-- ✅ Form starts here --}}
             <form action="{{ route('attendance.post') }}" method="POST">

@@ -44,7 +44,7 @@ class ClassController extends Controller
     
           
         $users->save();
-        return back()->with('Success','Users Store SuccessFully');
+        return back()->with('Success','Class Store SuccessFully');
     }
 
     /**
@@ -82,7 +82,7 @@ class ClassController extends Controller
     
         
         $users->save();
-        return back()->with('Success','Users Store SuccessFully');
+        return back()->with('Success','Class Update SuccessFully');
     }
 
     /**
@@ -92,6 +92,6 @@ class ClassController extends Controller
     {
          $users= Classes::where('id' , $id)->first();
          $users->delete();
-         return back()->with('Success','Users Delete SuccessFully');
+         return back()->with('Success','Class Delete SuccessFully');
     }
 }

@@ -29,6 +29,11 @@
           <div class="card">
             <div class="card-header">
               <div class="card-title">Form Elements</div>
+               @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                      {{ session('success') }}
+                    </div>
+                  @endif
             </div>
             <div class="card-body">
               <a href="{{ route('students.index') }}" class="btn btn-success">Show Students</a>
@@ -63,19 +68,22 @@
                       </div>
                       <div class="form-group">
                         <label for="class_id">Class</label>
-                        <select name="class_id" id="class_id" class="form-control" required>
-                          <option value="">Select Class</option>
-                          {{-- @foreach ($student as $class) --}}
-                            <option value="{{ $student->id }}">{{ $student->name }}</option>
-                          {{-- @endforeach --}}
-                        </select>
-                      </div>
-                    </div>
+                           <select name="class_id" id="class_id" class="form-control" required>
+                              <option value="">Select Class</option>
+                                    @foreach ($classes as $class)
+                                      <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                    @endforeach
+                            </select>
 
-                     <div class="form-group">
+
+                      </div>
+                       <div class="form-group">
                         <label for="address">Roll No</label>
                         <input type="number" class="form-control" name="roll_no" id="roll_no" placeholder="Enter Roll No" required>
                       </div>
+                    </div>
+
+                    
 
                     <div class="col-md-6 col-lg-4">
                       <div class="form-group">

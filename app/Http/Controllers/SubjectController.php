@@ -43,7 +43,7 @@ class SubjectController extends Controller
     
           
         $users->save();
-        return back()->with('Success','Users Store SuccessFully');
+        return back()->with('Success','Subject Store SuccessFully');
     }
 
     /**
@@ -81,7 +81,7 @@ class SubjectController extends Controller
     
         
         $users->save();
-        return back()->with('Success','Users Store SuccessFully');
+        return back()->with('Success','Subject Update SuccessFully');
     }
 
     /**
@@ -91,6 +91,6 @@ class SubjectController extends Controller
     {
          $users= Subject::where('id' , $id)->first();
          $users->delete();
-         return back()->with('Success','Users Delete SuccessFully');
+         return back()->with('Success','Subject Delete SuccessFully');
     }
 }

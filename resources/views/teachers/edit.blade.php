@@ -29,6 +29,11 @@
           <div class="card">
             <div class="card-header">
               <div class="card-title">Form Elements</div>
+               @if (session('Success'))
+                    <div class="alert alert-success" role="alert">
+                      {{ session('Success') }}
+                    </div>
+                  @endif
             </div>
             <div class="card-body">
               {{-- ✅ Form starts here --}}

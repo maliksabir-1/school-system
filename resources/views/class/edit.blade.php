@@ -4,7 +4,7 @@
   <div class="container">
     <div class="page-inner">
       <div class="page-header">
-        <h3 class="fw-bold mb-3">Edit Student</h3>
+        <h3 class="fw-bold mb-3">Edit Classes</h3>
         <ul class="breadcrumbs mb-3">
           <li class="nav-home">
             <a href="#">
@@ -15,7 +15,7 @@
             <i class="icon-arrow-right"></i>
           </li>
           <li class="nav-item">
-            <a href="#">Students</a>
+            <a href="#">Class</a>
           </li>
           <li class="separator">
             <i class="icon-arrow-right"></i>
@@ -30,7 +30,12 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <div class="card-title">Edit Form</div>
+              <div class="card-title">Edit Class</div>
+               @if (session('Success'))
+                    <div class="alert alert-success" role="alert">
+                      {{ session('Success') }}
+                    </div>
+                  @endif
             </div>
             <div class="card-body">
               <a href="{{ route('class.index') }}" class="btn btn-success">Back to List</a>

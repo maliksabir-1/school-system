@@ -40,7 +40,7 @@ class ParentController extends Controller
         $users->relation = $request->relation ;
       
           $users->save();
-        return back()->with('Success','Users Store SuccessFully');
+        return back()->with('Success','Parent Store SuccessFully');
     }
 
     /**
@@ -76,7 +76,7 @@ class ParentController extends Controller
         $users->relation = $request->relation ;
       
           $users->save();
-        return back()->with('Success','Users Store SuccessFully');
+        return back()->with('Success','Parent update SuccessFully');
     }
 
     /**
@@ -86,6 +86,6 @@ class ParentController extends Controller
     {
          $users= Parents::where('id' , $id)->first();
          $users->delete();
-         return back()->with('Success','Users Delete SuccessFully');
+         return back()->with('Success','parent Delete SuccessFully');
     }
 }

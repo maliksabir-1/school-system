@@ -29,7 +29,7 @@
                 <div class="card">
                   <div class="card-header">
                     <h4 class="card-title">Basic</h4>
-                      <a href="{{ route('class.create')}}" class="btn btn-black" style="float: right">Add Student</a>
+                      <a href="{{ route('class.create')}}" class="btn btn-black" style="float: right">Add Classes</a>
                   </div>
                   
                   <div class="card-body">

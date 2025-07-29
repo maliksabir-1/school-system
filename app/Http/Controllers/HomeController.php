@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Models\Classes;
 use App\Models\Parents;
-use App\Models\Students;
+use App\Models\Student;
 
 class HomeController extends Controller
 {
@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function create()
     { 
-        $totalUsers = Students::count();
+        $totalUsers = Student::count();
         $totalparents = Parents::count();
         $totalteachers = Teacher::count();
         $totalclass = Classes::count();

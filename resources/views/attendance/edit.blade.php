@@ -9,6 +9,11 @@
     </div>
 
     <div class="card">
+       @if (session('Success'))
+                    <div class="alert alert-success" role="alert">
+                      {{ session('Success') }}
+                    </div>
+                  @endif
       <div class="card-body">
         <form action="{{ route('attendance.update', $users->id) }}" method="POST">
           @csrf

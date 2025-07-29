@@ -38,53 +38,49 @@
 
                         <thead>
                           <tr>
-                            <th>ID</th>
-                            <th>Name</th>
+                           <th>Id</th>
+                           <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>Gender</th>
                             <th>Address</th>
                             <th>Class</th>
+                            <th>Roll No</th>
                             <th>Date of Birth</th>
-                            <th>Cnic No</th>
-                            <th>Image</th>
-                            <th>Action</th>
+                            <th>Actions</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
-                           <th>ID</th>
-                           <th>Name</th>
+                            <th>ID</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>Gender</th>
                             <th>Address</th>
                             <th>Class</th>
+                            <th>Roll No</th>
                             <th>Date of Birth</th>
-                            <th>Cnic No</th>
-                            <th>Image</th>
-                            <th>Action</th>
+                            <th>Actions</th>
                           </tr>
                         </tfoot>
                         <tbody>
-                        @foreach ($users as $item)
-
-                          <tr>
-                            <td>{{$item->id ?? ""}}</td>
-                            <td>{{$item->name ?? ""}}</td>
-                            <td>{{$item->email ?? ""}}</td>
-                            <td>{{$item->phone ?? ""}}</td>
-                            <td>{{$item->address ?? ""}}</td>
-                            <td>{{$item->class ?? ""}}</td>
-                            <td>{{$item->dob ?? ""}}</td>
-                            <td>{{$item->cnic ?? ""}}</td>
+                         @foreach ($users as $item)
+                           <tr>
+                            <td>{{$item->id }}</td>
+                            <td>{{$item->name }}</td>
+                            <td>{{$item->email }}</td>
+                            <td>{{$item->phone }}</td>
+                            <td>{{ ucfirst($item->gender) }}</td>
+                            <td>{{$item->address }}</td>
+                            <td>{{$item->class ?? 'N/A' }}</td>
+                            <td>{{$item->roll_number }}</td>
+                            <td>{{$item->dob }}</td>
                             <td>
-                            <img src="{{ asset('storage/' . $item->image) }}" style="width: 100px; height: 100px;" alt="img">
+                              <a href="{{ route('students.edit',['id' => $item->id ]) }}" class="btn btn-secondary">Edit</a>
+                              <a href="{{ route('students.delete',['id' => $item->id ]) }}" class="btn btn-danger">Delete</a>
                             </td>
-
-
-                             <td>
-                                <a href="{{ route('students.edit',['id' => $item->id ]) }}" class="btn btn-secondary">Edit</a>
-                                <a href="{{ route('students.delete',['id' => $item->id ]) }}" class="btn btn-danger">Delete</a>
-                              </td>
+                            </tr>
                           @endforeach
                         </tbody>
                       </table>
