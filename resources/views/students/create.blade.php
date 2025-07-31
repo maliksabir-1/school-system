@@ -78,7 +78,7 @@
 
                       </div>
                        <div class="form-group">
-                        <label for="address">Roll No</label>
+                        <label for="roll_no">Roll No</label>
                         <input type="number" class="form-control" name="roll_no" id="roll_no" placeholder="Enter Roll No" required>
                       </div>
                     </div>

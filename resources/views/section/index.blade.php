@@ -14,7 +14,7 @@
                   <i class="icon-arrow-right"></i>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('students.index') }}">Tables</a>
+                  <a href="{{ route('section.index') }}">Tables</a>
                 </li>
                 <li class="separator">
                   <i class="icon-arrow-right"></i>
@@ -29,7 +29,7 @@
                 <div class="card">
                   <div class="card-header">
                     <h4 class="card-title">Basic</h4>
-                      <a href="{{ route('students.create')}}" class="btn btn-black" style="float: right">Add Student</a>
+                      <a href="{{ route('section.create')}}" class="btn btn-black" style="float: right">Add Teacher</a>
                   </div>
                   
                   <div class="card-body">
@@ -38,49 +38,33 @@
 
                         <thead>
                           <tr>
-                           <th>Id</th>
-                           <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Gender</th>
-                            <th>Address</th>
-                            <th>Class</th>
-                            <th>Roll No</th>
-                            <th>Date of Birth</th>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Class ID</th>
+                            <th>Teacher ID</th>
                             <th>Actions</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
-                            <th>ID</th>
+                           <th>#</th>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Gender</th>
-                            <th>Address</th>
-                            <th>Class</th>
-                            <th>Roll No</th>
-                            <th>Date of Birth</th>
+                            <th>Class ID</th>
+                            <th>Teacher ID</th>
                             <th>Actions</th>
                           </tr>
                         </tfoot>
                         <tbody>
-                         @foreach ($users as $item)
-                           <tr>
-                            <td>{{$item->id }}</td>
-                            <td>{{$item->name }}</td>
-                            <td>{{$item->email }}</td>
-                            <td>{{$item->phone }}</td>
-                            <td>{{ ucfirst($item->gender) }}</td>
-                            <td>{{$item->address }}</td>
-                            <td>{{$item->class_id}}</td>
-                            <td>{{$item->roll_number }}</td>
-                            <td>{{$item->dob }}</td>
-                            <td>
-                              <a href="{{ route('students.edit',['id' => $item->id ]) }}" class="btn btn-secondary">Edit</a>
-                              <a href="{{ route('students.delete',['id' => $item->id ]) }}" class="btn btn-danger">Delete</a>
-                            </td>
-                            </tr>
+                        @foreach ($users as $item)
+                          <tr>
+                            <td>{{$item->id ?? ""}}</td>
+                            <td>{{$item->name ?? ""}}</td>
+                            <td>{{$item->class_id ?? ""}}</td>
+                            <td>{{$item->teacher_id ?? ""}}</td>
+                             <td>
+                                <a href="{{ route('section.edit',['id' => $item->id ]) }}" class="btn btn-secondary">Edit</a>
+                                <a href="{{ route('section.delete',['id' => $item->id ]) }}" class="btn btn-danger">Delete</a>
+                              </td>
                           @endforeach
                         </tbody>
                       </table>

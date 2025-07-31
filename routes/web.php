@@ -11,6 +11,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\SectionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,3 +92,10 @@ Route::get('subject/index',[SubjectController::class,'index'])->name('subject.in
 Route::get('subject/edit/{id}',[SubjectController::class,'edit'])->name('subject.edit');
 Route::post('subject/update/{id}',[SubjectController::class,'update'])->name('subject.update');
 Route::get('subject/delete/{id}',[SubjectController::class,'destroy'])->name('subject.delete');
+
+Route::get('section/create',[SectionController::class,'create'])->name('section.create');
+Route::post('section/post',[SectionController::class,'store'])->name('section.post');
+Route::get('section/index',[SectionController::class,'index'])->name('section.index');
+Route::get('section/edit/{id}',[SectionController::class,'edit'])->name('section.edit');
+Route::post('section/update/{id}',[SectionController::class,'update'])->name('section.update');
+Route::get('section/delete/{id}',[SectionController::class,'destroy'])->name('section.delete');
