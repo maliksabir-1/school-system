@@ -15,6 +15,8 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\FeepaymentController;
+use App\Http\Controllers\FeestructureController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,3 +125,17 @@ Route::get('book/index',[BookController::class,'index'])->name('book.index');
 Route::get('book/edit/{id}',[BookController::class,'edit'])->name('book.edit');
 Route::post('book/update/{id}',[BookController::class,'update'])->name('book.update');
 Route::get('book/delete/{id}',[BookController::class,'destroy'])->name('book.delete');
+
+Route::get('feepayment/create',[FeepaymentController::class,'create'])->name('feepayment.create');
+Route::post('feepayment/post',[FeepaymentController::class,'store'])->name('feepayment.post');
+Route::get('feepayment/index',[FeepaymentController::class,'index'])->name('feepayment.index');
+Route::get('feepayment/edit/{id}',[FeepaymentController::class,'edit'])->name('feepayment.edit');
+Route::post('feepayment/update/{id}',[FeepaymentController::class,'update'])->name('feepayment.update');
+Route::get('feepayment/delete/{id}',[FeepaymentController::class,'destroy'])->name('feepayment.delete');
+
+Route::get('feestructure/create',[FeestructureController::class,'create'])->name('feestructure.create');
+Route::post('feestructure/post',[FeestructureController::class,'store'])->name('feestructure.post');
+Route::get('feestructure/index',[FeestructureController::class,'index'])->name('feestructure.index');
+Route::get('feestructure/edit/{id}',[FeestructureController::class,'edit'])->name('feestructure.edit');
+Route::post('feestructure/update/{id}',[FeestructureController::class,'update'])->name('feestructure.update');
+Route::get('feestructure/delete/{id}',[FeestructureController::class,'destroy'])->name('feestructure.delete');

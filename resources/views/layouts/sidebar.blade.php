@@ -215,6 +215,38 @@
                   </ul>
                 </div>
              </li>
+               <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#FeePayment">
+                  <i class="fas fa-pen-square"></i>
+                  <p>FeePayments</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="FeePayment">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{{ route('feepayment.index') }}">
+                        <span class="sub-item">FeePayments List</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+             </li>
+               <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#Feestructure">
+                  <i class="fas fa-pen-square"></i>
+                  <p>Feestructures</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="Feestructure">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{{ route('feestructure.index') }}">
+                        <span class="sub-item">Feestructures List</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+             </li>
             </ul>
           </div>
         </div>
