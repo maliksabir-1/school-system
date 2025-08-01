@@ -39,7 +39,7 @@ class StudentController extends Controller
         $request->validate([
             'name'      => 'required|string|max:255',
             'email'     => 'required|email',
-            'phone'     => 'required|string|max:15',
+            'phone'     => 'required|string|max:255',
             'gender'    => 'required|string',
             'address'   => 'required|string|max:255',
             'class_id'  => 'required|exists:classes,id',
@@ -92,7 +92,7 @@ class StudentController extends Controller
          $request->validate([
             'name'      => 'required|string|max:255',
             'email'     => 'required|email',
-            'phone'     => 'required|string|max:15',
+            'phone'     => 'required|string|max:255',
             'gender'    => 'required|string',
             'address'   => 'required|string|max:255',
             'class_id'  => 'required|exists:classes,id',

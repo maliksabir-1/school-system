@@ -167,13 +167,13 @@
                     <div class="form-group">
                       <label for="class_id">Class</label>
                     <select name="class_id" id="class_id" class="form-control" required>
-  <option value="">Select Class</option>
-  @foreach ($classes as $class)
-    <option value="{{ $class->id }}" {{ $users->class_id == $class->id ? 'selected' : '' }}>
-      {{ $class->name }}
-    </option>
-  @endforeach
-</select>
+                      <option value="">Select Class</option>
+                      @foreach ($classes as $class)
+                        <option value="{{ $class->id }}" {{ $users->class_id == $class->id ? 'selected' : '' }}>
+                          {{ $class->name }}
+                        </option>
+                      @endforeach
+                    </select>
 
                     </div>
                     <div class="form-group">

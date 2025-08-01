@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Section;
+use App\Models\Classes;
+use App\Models\Teacher;
 
 use Illuminate\Http\Request;
 
@@ -21,7 +23,9 @@ class SectionController extends Controller
      */
     public function create()
     {
-        return view('section.create');
+         $classes = Classes::all();
+         $teachers = Teacher::all();
+        return view('section.create',compact('classes','teachers'));
     }
 
     /**
@@ -56,7 +60,9 @@ class SectionController extends Controller
     public function edit(string $id)
     {
         $users=Section::where('id',$id)->first();
-        return view('section.edit',compact('users'));
+         $classes = Classes::all();
+         $teachers = Teacher::all();
+        return view('section.edit',compact('users','classes','teachers'));
     }
 
     /**

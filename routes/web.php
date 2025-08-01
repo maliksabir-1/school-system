@@ -12,6 +12,7 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -99,3 +100,10 @@ Route::get('section/index',[SectionController::class,'index'])->name('section.in
 Route::get('section/edit/{id}',[SectionController::class,'edit'])->name('section.edit');
 Route::post('section/update/{id}',[SectionController::class,'update'])->name('section.update');
 Route::get('section/delete/{id}',[SectionController::class,'destroy'])->name('section.delete');
+
+Route::get('setting/create',[SettingController::class,'create'])->name('setting.create');
+Route::post('setting/post',[SettingController::class,'store'])->name('setting.post');
+Route::get('setting/index',[SettingController::class,'index'])->name('setting.index');
+Route::get('setting/edit/{id}',[SettingController::class,'edit'])->name('setting.edit');
+Route::post('setting/update/{id}',[SettingController::class,'update'])->name('setting.update');
+Route::get('setting/delete/{id}',[SettingController::class,'destroy'])->name('setting.delete');

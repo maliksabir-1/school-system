@@ -167,6 +167,22 @@
                   </ul>
                 </div>
              </li>
+               <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#Setting">
+                  <i class="fas fa-pen-square"></i>
+                  <p>Settings</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="Setting">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{{ route('setting.index') }}">
+                        <span class="sub-item">Settings List</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+             </li>
             </ul>
           </div>
         </div>

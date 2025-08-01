@@ -36,7 +36,7 @@
               @endif
             </div>
             <div class="card-body">
-              <a href="{{ route('section.index') }}" class="btn btn-success">Show Section</a>
+              <a href="{{ route('section.index') }}" class="btn btn-success">Show ection</a>
               {{-- ✅ Form starts here --}}
               <form action="{{ route('section.post') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -51,15 +51,26 @@
                   <div class="col-md-6 col-lg-4">
                     <div class="form-group">
                       <label for="class_id">Class</label>
-                      <input type="text" class="form-control" name="class_id" id="class_id" placeholder="Enter class_id" required>
+                      <select name="class_id" id="class_id" class="form-control" required>
+                        <option value="">Select Class</option>
+                        @foreach ($classes as $class)
+                          <option value="{{ $class->id }}">{{ $class->name }}</option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 
+
                   <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                      <label for="teacher_id">Teacher</label>
-                      <input type="text" class="form-control" name="teacher_id" id="teacher_id" placeholder="Enter teacher_id" required>
-                    </div>
+                      <div class="form-group">
+                        <label for="teacher_id">Teacher</label>
+                        <select name="teacher_id" id="teacher_id" class="form-control" required>
+                          <option value="">Select Teacher</option>
+                          @foreach ($teachers as $teacher)
+                            <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                          @endforeach
+                        </select>
+                      </div>
                     <div class="card-action">
                       <button type="submit" class="btn btn-success">Submit</button>
                       <button type="reset" class="btn btn-danger">Cancel</button>

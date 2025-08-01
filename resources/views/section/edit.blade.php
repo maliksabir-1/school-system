@@ -49,18 +49,34 @@
                     </div>
                   </div>
 
-                  <div class="col-md-6 col-lg-4">
+                 <div class="col-md-6 col-lg-4">
                     <div class="form-group">
                       <label for="class_id">Class</label>
-                      <input type="text" class="form-control" name="class_id" id="class_id" value="{{ $users->class_id }}" required>
+                      <select name="class_id" id="class_id" class="form-control" required>
+                        <option value="">Select Class</option>
+                        @foreach ($classes as $class)
+                          <option value="{{ $class->id }}" {{  $users->class_id == $class->id ? 'selected' : '' }}>
+                            {{ $class->name }}
+                          </option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 
+
                   <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
+                   <div class="form-group">
                       <label for="teacher_id">Teacher</label>
-                      <input type="text" class="form-control" name="teacher_id" id="teacher_id" value="{{ $users->teacher_id }}" required>
+                      <select name="teacher_id" id="teacher_id" class="form-control" required>
+                        <option value="">Select Teacher</option>
+                        @foreach ($teachers as $teacher)
+                          <option value="{{ $teacher->id }}" {{ ( $users->teacher_id == $teacher->id) ? 'selected' : '' }}>
+                            {{ $teacher->name }}
+                          </option>
+                        @endforeach
+                      </select>
                     </div>
+
                     <div class="card-action">
                       <button type="submit" class="btn btn-success">Update</button>
                       <a href="{{ route('section.index') }}" class="btn btn-secondary">Cancel</a>
