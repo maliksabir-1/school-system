@@ -247,6 +247,38 @@
                   </ul>
                 </div>
              </li>
+               <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#Mark">
+                  <i class="fas fa-pen-square"></i>
+                  <p>Marks</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="Mark">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{{ route('mark.index') }}">
+                        <span class="sub-item">Marks List</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+             </li>
+               <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#timetable">
+                  <i class="fas fa-pen-square"></i>
+                  <p>Timetables</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="timetable">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{{ route('timetable.index') }}">
+                        <span class="sub-item">Timetables List</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+             </li>
             </ul>
           </div>
         </div>

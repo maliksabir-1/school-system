@@ -17,6 +17,8 @@ use App\Http\Controllers\ExamController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\FeepaymentController;
 use App\Http\Controllers\FeestructureController;
+use App\Http\Controllers\MarkController;
+use App\Http\Controllers\TimetableController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -139,3 +141,17 @@ Route::get('feestructure/index',[FeestructureController::class,'index'])->name('
 Route::get('feestructure/edit/{id}',[FeestructureController::class,'edit'])->name('feestructure.edit');
 Route::post('feestructure/update/{id}',[FeestructureController::class,'update'])->name('feestructure.update');
 Route::get('feestructure/delete/{id}',[FeestructureController::class,'destroy'])->name('feestructure.delete');
+
+Route::get('mark/create',[MarkController::class,'create'])->name('mark.create');
+Route::post('mark/post',[MarkController::class,'store'])->name('mark.post');
+Route::get('mark/index',[MarkController::class,'index'])->name('mark.index');
+Route::get('mark/edit/{id}',[MarkController::class,'edit'])->name('mark.edit');
+Route::post('mark/update/{id}',[MarkController::class,'update'])->name('mark.update');
+Route::get('mark/delete/{id}',[MarkController::class,'destroy'])->name('mark.delete');
+
+Route::get('timetable/create',[TimetableController::class,'create'])->name('timetable.create');
+Route::post('timetable/post',[TimetableController::class,'store'])->name('timetable.post');
+Route::get('timetable/index',[TimetableController::class,'index'])->name('timetable.index');
+Route::get('timetable/edit/{id}',[TimetableController::class,'edit'])->name('timetable.edit');
+Route::post('timetable/update/{id}',[TimetableController::class,'update'])->name('timetable.update');
+Route::get('timetable/delete/{id}',[TimetableController::class,'destroy'])->name('timetable.delete');
