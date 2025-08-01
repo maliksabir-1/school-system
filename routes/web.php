@@ -13,6 +13,8 @@ use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ExamController;
+use App\Http\Controllers\BookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -107,3 +109,17 @@ Route::get('setting/index',[SettingController::class,'index'])->name('setting.in
 Route::get('setting/edit/{id}',[SettingController::class,'edit'])->name('setting.edit');
 Route::post('setting/update/{id}',[SettingController::class,'update'])->name('setting.update');
 Route::get('setting/delete/{id}',[SettingController::class,'destroy'])->name('setting.delete');
+
+Route::get('exam/create',[ExamController::class,'create'])->name('exam.create');
+Route::post('exam/post',[ExamController::class,'store'])->name('exam.post');
+Route::get('exam/index',[ExamController::class,'index'])->name('exam.index');
+Route::get('exam/edit/{id}',[ExamController::class,'edit'])->name('exam.edit');
+Route::post('exam/update/{id}',[ExamController::class,'update'])->name('exam.update');
+Route::get('exam/delete/{id}',[ExamController::class,'destroy'])->name('exam.delete');
+
+Route::get('book/create',[BookController::class,'create'])->name('book.create');
+Route::post('book/post',[BookController::class,'store'])->name('book.post');
+Route::get('book/index',[BookController::class,'index'])->name('book.index');
+Route::get('book/edit/{id}',[BookController::class,'edit'])->name('book.edit');
+Route::post('book/update/{id}',[BookController::class,'update'])->name('book.update');
+Route::get('book/delete/{id}',[BookController::class,'destroy'])->name('book.delete');

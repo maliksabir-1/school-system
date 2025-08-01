@@ -183,6 +183,38 @@
                   </ul>
                 </div>
              </li>
+               <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#Exam">
+                  <i class="fas fa-pen-square"></i>
+                  <p>Exams</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="Exam">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{{ route('exam.index') }}">
+                        <span class="sub-item">Exams List</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+             </li>
+               <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#Book">
+                  <i class="fas fa-pen-square"></i>
+                  <p>Books</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="Book">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{{ route('book.index') }}">
+                        <span class="sub-item">Books List</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+             </li>
             </ul>
           </div>
         </div>
