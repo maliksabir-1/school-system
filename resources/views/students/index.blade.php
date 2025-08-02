@@ -38,44 +38,54 @@
 
                         <thead>
                           <tr>
-                           <th>Id</th>
-                           <th>Name</th>
+                            <th>#</th>
+                            <th>User</th>
+                            <th>Name</th>
+                            <th>Class</th>
+                            <th>Section</th>
+                            <th>Parent</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>DOB</th>
                             <th>Gender</th>
-                            <th>Address</th>
-                            <th>Class</th>
-                            <th>Roll No</th>
-                            <th>Date of Birth</th>
+                            <th>Image</th>
                             <th>Actions</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
-                            <th>ID</th>
+                            <th>#</th>
+                            <th>User</th>
                             <th>Name</th>
+                            <th>Class</th>
+                            <th>Section</th>
+                            <th>Parent</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>DOB</th>
                             <th>Gender</th>
-                            <th>Address</th>
-                            <th>Class</th>
-                            <th>Roll No</th>
-                            <th>Date of Birth</th>
+                            <th>Image</th>
                             <th>Actions</th>
                           </tr>
                         </tfoot>
                         <tbody>
                          @foreach ($users as $item)
                            <tr>
-                            <td>{{$item->id }}</td>
-                            <td>{{$item->name }}</td>
-                            <td>{{$item->email }}</td>
-                            <td>{{$item->phone }}</td>
-                            <td>{{ ucfirst($item->gender) }}</td>
-                            <td>{{$item->address }}</td>
-                            <td>{{$item->class_id}}</td>
-                            <td>{{$item->roll_number }}</td>
-                            <td>{{$item->dob }}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->user_id}}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->class_id }}</td>
+                            <td>{{ $item->section_id }}</td>
+                            <td>{{ $item->parent_id }}</td>
+                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->phone }}</td>
+                            <td>{{ $item->dob }}</td>
+                            <td>{{ $item->gender }}</td>
+                            <td>
+                               {{-- @if($student->image) --}}
+                       <img src="{{ asset('storage/' . $item->image) }}" style="width: 100px; height: 100px;" alt="img">
+
+                            </td>
                             <td>
                               <a href="{{ route('students.edit',['id' => $item->id ]) }}" class="btn btn-secondary">Edit</a>
                               <a href="{{ route('students.delete',['id' => $item->id ]) }}" class="btn btn-danger">Delete</a>

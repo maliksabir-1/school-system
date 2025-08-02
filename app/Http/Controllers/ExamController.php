@@ -33,7 +33,7 @@ class ExamController extends Controller
          'name' => 'required|string|max:255',
         'term' => 'required|string|max:255',
         'start_date' => 'required|date',
-        'end_date' => 'required|date|after_or_equal:start_date',
+        'end_date' => 'required|date',
         ]);
             $users = new Exam();
         $users->name = $request->name;
@@ -70,7 +70,7 @@ class ExamController extends Controller
          'name' => 'required|string|max:255',
         'term' => 'required|string|max:255',
         'start_date' => 'required|date',
-        'end_date' => 'required|date|after_or_equal:start_date',
+        'end_date' => 'required|date|',
         ]);
             $users=Exam::where('id',$id)->first();
         $users->name = $request->name;

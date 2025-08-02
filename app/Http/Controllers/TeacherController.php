@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Teacher;
+use App\Models\User;
 
 class TeacherController extends Controller
 {
@@ -22,7 +23,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('teachers.create');
+         $users = User::all();
+        return view('teachers.create',compact('users'));
     }
 
     /**
@@ -31,31 +33,24 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
-            'class' => 'required',
-            'dob' => 'required',
-            'cnic' => 'required',
-            'image' => 'required',
+            'user_id'       => 'required|exists:users,id',
+            'name'          => 'required|string|max:255',
+            'dob'           => 'nullable|date',
+            'gender'        => 'nullable|in:Male,Female,Other',
+            'qualification' => 'nullable|string|max:255',
+            'phone'         => 'nullable|string|max:255',
+            'address'       => 'nullable|string|max:255',
         ]);
-
         $users=new Teacher();
+        $users->user_id = $request->user_id ;
         $users->name = $request->name ;
-        $users->address = $request->address ;
-        $users->cnic = $request->cnic ;
-        $users->email = $request->email ;
-        $users->class = $request->class ;
-        $users->image = $request->image ;
-        $users->phone = $request->phone ;
         $users->dob = $request->dob ;
+        $users->gender = $request->gender ;
+        $users->qualification = $request->qualification ;
+        $users->phone = $request->phone ;
+        $users->address= $request->address;
 
-        if ($request->hasFile('image')) {
-    $fileName = time().'_'.$request->image->getClientOriginalName();
-    $filePath = $request->file('image')->storeAs('uploads', $fileName, 'public');
-    $users->image = $filePath;
-}
+     
         
         $users->save();
         return back()->with('Success','Teacher Store SuccessFully');
@@ -75,6 +70,7 @@ class TeacherController extends Controller
     public function edit(string $id)
     {
          $users= Teacher::where('id' , $id)->first();
+          $users = User::all();
          return view('teachers.edit',compact('users'));
     }
 
@@ -84,32 +80,22 @@ class TeacherController extends Controller
     public function update(Request $request, string $id)
     {
          $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'cnic' => 'required',
-            'email' => 'required',
-            'class' => 'required',
-            'image' => 'required',
-            'phone' => 'required',
-            'dob' => 'required',
+            'user_id'       => 'required|exists:users,id',
+            'name'          => 'required|string|max:255',
+            'dob'           => 'nullable|date',
+            'gender'        => 'nullable|in:Male,Female,Other',
+            'qualification' => 'nullable|string|max:255',
+            'phone'         => 'nullable|string|max:255',
+            'address'       => 'nullable|string|max:255',
         ]);
-
-        $users= Teacher::where('id' , $id)->first();
+        $users=new Teacher();
+        $users->user_id = $request->user_id ;
         $users->name = $request->name ;
-        $users->address = $request->address ;
-        $users->cnic = $request->cnic ;
-        $users->email = $request->email ;
-        $users->class = $request->class ;
-        $users->image = $request->image ;
-        $users->phone = $request->phone ;
         $users->dob = $request->dob ;
-
-        if ($request->hasFile('image')) {
-    $fileName = time().'_'.$request->image->getClientOriginalName();
-    $filePath = $request->file('image')->storeAs('uploads', $fileName, 'public');
-    $users->image = $filePath;
-}
-        
+        $users->gender = $request->gender ;
+        $users->qualification = $request->qualification ;
+        $users->phone = $request->phone ;
+        $users->address= $request->address;
         $users->save();
         return back()->with('Success','Teacher Update SuccessFully');
     }

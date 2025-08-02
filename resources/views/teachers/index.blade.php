@@ -38,49 +38,43 @@
 
                         <thead>
                           <tr>
-                            <th>ID</th>
+                             <th>ID</th>
+                            <th>User ID</th>
                             <th>Name</th>
-                            <th>Email</th>
+                            <th>DOB</th>
+                            <th>Gender</th>
+                            <th>Qualification</th>
                             <th>Phone</th>
                             <th>Address</th>
-                            <th>Class</th>
-                            <th>Date of Birth</th>
-                            <th>Cnic No</th>
-                            <th>Image</th>
-                            <th>Action</th>
+                            <th>Actions</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
-                           <th>ID</th>
-                           <th>Name</th>
-                            <th>Email</th>
+                            <th>ID</th>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>DOB</th>
+                            <th>Gender</th>
+                            <th>Qualification</th>
                             <th>Phone</th>
                             <th>Address</th>
-                            <th>Class</th>
-                            <th>Date of Birth</th>
-                            <th>Cnic No</th>
-                            <th>Image</th>
-                            <th>Action</th>
+                            <th>Actions</th>
                           </tr>
                         </tfoot>
                         <tbody>
                         @foreach ($users as $item)
 
                           <tr>
-                            <td>{{$item->id ?? ""}}</td>
-                            <td>{{$item->name ?? ""}}</td>
-                            <td>{{$item->email ?? ""}}</td>
-                            <td>{{$item->phone ?? ""}}</td>
-                            <td>{{$item->address ?? ""}}</td>
-                            <td>{{$item->class ?? ""}}</td>
-                            <td>{{$item->dob ?? ""}}</td>
-                            <td>{{$item->cnic ?? ""}}</td>
-                            <td>
-                            <img src="{{ asset('storage/' . $item->image) }}" style="width: 100px; height: 100px;" alt="img">
-                            </td>
-
-
+                             <td>{{ $item->id }}</td>
+                            <td>{{ $item->user_id }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->dob }}</td>
+                            <td>{{ $item->gender }}</td>
+                            <td>{{ $item->qualification }}</td>
+                            <td>{{ $item->phone }}</td>
+                            <td>{{ $item->address }}</td>
+                           
                              <td>
                                 <a href="{{ route('teachers.edit',['id' => $item->id ]) }}" class="btn btn-secondary">Edit</a>
                                 <a href="{{ route('teachers.delete',['id' => $item->id ]) }}" class="btn btn-danger">Delete</a>

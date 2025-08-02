@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\Classes;
+use App\Models\Section;
+use App\Models\Parents;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 
 class StudentController extends Controller
@@ -26,9 +30,13 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $classes = Classes::all();
-        // dd($classes);
-        return view('students.create', compact('classes'));
+      
+        $allUsers = User::all();
+        $allClasses = Classes::all();
+        $allSections = Section::all();
+        $allParents = Parents::all();
+
+        return view('students.create', compact('allUsers', 'allClasses', 'allSections', 'allParents'));
     }
 
     /**
@@ -36,27 +44,35 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'      => 'required|string|max:255',
-            'email'     => 'required|email',
-            'phone'     => 'required|string|max:255',
-            'gender'    => 'required|string',
-            'address'   => 'required|string|max:255',
-            'class_id'  => 'required|exists:classes,id',
-            'dob'       => 'required|date',
-            'roll_no'       => 'required',
+       $request->validate([
+            'user_id'     => 'required|exists:users,id',
+            'class_id'    => 'required|exists:classes,id',
+            'section_id'  => 'nullable|exists:sections,id',
+            'parent_id'   => 'nullable|exists:parents,id',
+            'name'        => 'required|string|max:255',
+            'email'       => 'nullable|email|max:255',
+            'phone'       => 'nullable||max:255',
+            'address'     => 'nullable||max:255',
+            'dob'         => 'nullable|date',
+            'gender'      => 'nullable|string|in:Male,Female,Other',
+            'image'       => 'nullable|image|max:2048',
         ]);
 
-        $student = new Student();
-        $student->user_id     = Auth::id();
-        $student->name        = $request->name;
-        $student->email       = $request->email;
-        $student->phone       = $request->phone;
-        $student->gender      = $request->gender;
-        $student->address     = $request->address;
-        $student->class_id    = $request->class_id; 
-        $student->dob         = $request->dob;
-        $student->roll_number = $request->roll_no;
+       $student = new Student();
+        $student->user_id = $request->user_id;
+        $student->class_id = $request->class_id;
+        $student->section_id = $request->section_id;
+        $student->parent_id = $request->parent_id;
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        $student->address = $request->address;
+        $student->dob = $request->dob;
+        $student->gender = $request->gender;
+
+        if ($request->hasFile('image')) {
+            $student->image = $request->file('image')->store('students', 'public');
+        }
         $student->save();
 
         return redirect()->back()->with('success', 'Student created successfully.');
@@ -77,9 +93,13 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-         $users= Student::where('id' , $id)->first();
-         $classes = Classes::all();
-         return view('students.edit',compact('users','classes'));
+         $student = Student::where('id',$id)->first();
+        $allUsers = User::all();
+        $allClasses = Classes::all();
+        $allSections = Section::all();
+        $allParents = Parents::all();
+
+        return view('students.edit', compact('student', 'allUsers', 'allClasses', 'allSections', 'allParents'));
     }
    
 
@@ -90,27 +110,36 @@ class StudentController extends Controller
     public function update(Request $request, string $id)
     {
          $request->validate([
-            'name'      => 'required|string|max:255',
-            'email'     => 'required|email',
-            'phone'     => 'required|string|max:255',
-            'gender'    => 'required|string',
-            'address'   => 'required|string|max:255',
-            'class_id'  => 'required|exists:classes,id',
-            'dob'       => 'required|date',
-            'roll_no'       => 'required',
+            'user_id'     => 'required|exists:users,id',
+            'class_id'    => 'required|exists:classes,id',
+            'section_id'  => 'nullable|exists:sections,id',
+            'parent_id'   => 'nullable|exists:parents,id',
+            'name'        => 'required|string|max:255',
+            'email'       => 'nullable|email|max:255',
+            'phone'       => 'nullable|string|max:255',
+            'address'     => 'nullable||max:255',
+            'dob'         => 'nullable|date',
+            'gender'      => 'nullable|string|in:Male,Female,Other',
+            'image'       => 'nullable|image|max:2048',
         ]);
 
-        $student= Student::where('id' , $id)->first();
-        $student->user_id     = Auth::id();
-        $student->name        = $request->name;
-        $student->email       = $request->email;
-        $student->phone       = $request->phone;
-        $student->gender      = $request->gender;
-        $student->address     = $request->address;
-        $student->class_id    = $request->class_id; 
-        $student->dob         = $request->dob;
-        $student->roll_number = $request->roll_no;
+        $student = Student::where('id',$id)->first();
+        $student->user_id = $request->user_id;
+        $student->class_id = $request->class_id;
+        $student->section_id = $request->section_id;
+        $student->parent_id = $request->parent_id;
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        $student->address = $request->address;
+        $student->dob = $request->dob;
+        $student->gender = $request->gender;
+
+        if ($request->hasFile('image')) {
+            $student->image = $request->file('image')->store('students', 'public');
+        }
         $student->save();
+
 
         return redirect()->back()->with('success', 'Student Update successfully.');
 

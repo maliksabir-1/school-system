@@ -42,35 +42,46 @@
                 @csrf
                 <div class="row">
                   {{-- Phone Field --}}
-<div class="col-md-6 col-lg-4">
-    <div class="form-group">
-        <label for="phone">Phone</label>
-        <input 
-            type="text" 
-            class="form-control" 
-            name="phone" 
-            id="phone" 
-            placeholder="Enter Phone Number" 
-            value="{{ old( $users->phone ?? '') }}">
-    </div>
-</div>
+                 <div class="col-md-6 col-lg-4">
+                    <div class="form-group">
+                      <label for="user_id">Student/User</label>
+                      <select name="user_id" id="user_id" class="form-control" required>
+                        <option value="">Select Student</option>
+                        @foreach ($allUsers as $user)
+                          <option value="{{ $user->id }}" {{ old('user_id', $users->user_id ?? '') == $user->id ? 'selected' : '' }}>
+                            {{ $user->name }}
+                          </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
 
-{{-- Relation Dropdown --}}
-<div class="col-md-6 col-lg-4">
-    <div class="form-group">
-        <label for="relation">Relation</label>
-        <select class="form-control" name="relation" id="relation">
-            <option value="">Select Relation</option>
-            <option value="Mother" >Mother</option>
-            <option value="Father"  >Father</option>
-            <option value="Guardian" >Guardian</option>
-            <option value="Other" >Other</option>
-        </select>
-    </div>
-</div>
+               {{-- Father Name --}}
+                  <div class="col-md-6 col-lg-4">
+                    <div class="form-group">
+                      <label for="father_name">Father Name</label>
+                      <input type="text" name="father_name" id="father_name" class="form-control" placeholder="Enter Father's Name"
+                        value="{{ old('father_name', $users->father_name ?? '') }}">
+                    </div>
+                  </div>
 
                   
+                  {{-- Phone --}}
                   <div class="col-md-6 col-lg-4">
+                    <div class="form-group">
+                      <label for="phone">Phone</label>
+                      <input type="text" name="phone" id="phone" class="form-control" placeholder="Enter Phone Number"
+                        value="{{ old('phone', $users->phone ?? '') }}">
+                    </div>
+                  </div>
+                   {{-- Address --}}
+                  <div class="col-md-6 col-lg-4">
+                    <div class="form-group">
+                      <label for="address">Address</label>
+                      <textarea name="address" id="address" class="form-control" rows="2" placeholder="Enter Address">{{ old('address', $users->address ?? '') }}</textarea>
+                    </div>
+                  </div>
+                   <div class="col-md-12 col-lg-12">
                    
                     <div class="card-action">
                       <button type="submit" class="btn btn-success">Submit</button>

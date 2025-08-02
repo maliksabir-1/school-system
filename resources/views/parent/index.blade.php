@@ -36,22 +36,54 @@
                     <div class="table-responsive">
                      <table id="basic-datatables" class="display table table-striped table-hover">
 
-                        <thead>
+                        {{-- <thead>
                           <tr>
-                            <th>ID</th>
-                            <th>Phone</th>
-                            <th>Relation</th>
-                            
-                            <th>Action</th>
+                           @extends('layouts.master') --}}
+{{-- @section('content')
+<div class="container">
+  <div class="page-inner">
+    <div class="page-header">
+      <h3 class="fw-bold mb-3">Parents List</h3>
+      <ul class="breadcrumbs mb-3">
+        <li class="nav-home">
+          <a href="#"><i class="icon-home"></i></a>
+        </li>
+        <li class="separator"><i class="icon-arrow-right"></i></li>
+        <li class="nav-item"><a href="#">Parent</a></li>
+      </ul>
+    </div> --}}
+
+    {{-- <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">All Parents</div>
+            @if (session('Success'))
+              <div class="alert alert-success">{{ session('Success') }}</div>
+            @endif
+            <a href="{{ route('parent.create') }}" class="btn btn-primary float-right">Add New Parent</a>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped"> --}}
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Student Name</th>
+                    <th>Father Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Action</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
-                           <th>ID</th>
-                           
+                            <th>#</th>
+                            <th>Student Name</th>
+                            <th>Father Name</th>
                             <th>Phone</th>
-                            <th>relation</th>
-                            
+                            <th>Address</th>
                             <th>Action</th>
                           </tr>
                         </tfoot>
@@ -59,17 +91,17 @@
                         @foreach ($users as $item)
 
                           <tr>
-                            <td>{{$item->id ?? ""}}</td>
-                            <td>{{$item->phone ?? ""}}</td>
-                            <td>{{$item->relation ?? ""}}</td>
-                           
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->user->name ?? 'N/A' }}</td>
+                            <td>{{ $item->father_name }}</td>
+                            <td>{{ $item->phone }}</td>
+                            <td>{{ $item->address }}</td>
                             
-
-
                              <td>
                                 <a href="{{ route('parent.edit',['id' => $item->id ]) }}" class="btn btn-secondary">Edit</a>
                                 <a href="{{ route('parent.delete',['id' => $item->id ]) }}" class="btn btn-danger">Delete</a>
                               </td>
+                              </tr>
                           @endforeach
                         </tbody>
                       </table>

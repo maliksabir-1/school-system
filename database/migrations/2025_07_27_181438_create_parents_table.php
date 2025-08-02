@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('parents', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->index();
+            $table->string('father_name');
             $table->string('phone');
-            $table->enum('relation', ['Father', 'Mother', 'Guardian', 'Other'])->default('Father');
+            $table->text('address');
             $table->timestamps();
         });
     }
