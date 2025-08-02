@@ -279,6 +279,22 @@
                   </ul>
                 </div>
              </li>
+               <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#subjectteacher">
+                  <i class="fas fa-pen-square"></i>
+                  <p>Class Subject Teachers</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="subjectteacher">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{{ route('subjectteacher.index') }}">
+                        <span class="sub-item">Class Subject Teachers List</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+             </li>
             </ul>
           </div>
         </div>

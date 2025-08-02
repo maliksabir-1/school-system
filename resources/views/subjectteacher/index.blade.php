@@ -29,7 +29,7 @@
                 <div class="card">
                   <div class="card-header">
                     <h4 class="card-title">Basic</h4>
-                      <a href="{{ route('subject.create')}}" class="btn btn-black" style="float: right">Add Subject</a>
+                      <a href="{{ route('subjectteacher.create')}}" class="btn btn-black" style="float: right">Add Subject</a>
                   </div>
                   
                   <div class="card-body">
@@ -38,33 +38,36 @@
 
                         <thead>
                           <tr>
-                            <th>ID</th>
-                            <th>Subject Name</th>
-                           <th>Class Id</th>
-                            <th>Action</th>
+                            <th>#</th>
+                            <th>Class</th>
+                            <th>Subject</th>
+                            <th>Teacher</th>
+                            <th>Actions</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
-                           <th>ID</th>
-                           <th>Subject Name</th>
-                           <th>Class Id</th>
-                            <th>Action</th>
+                            <th>#</th>
+                            <th>Class</th>
+                            <th>Subject</th>
+                            <th>Teacher</th>
+                            <th>Actions</th>
                           </tr>
                         </tfoot>
                         <tbody>
                         @foreach ($users as $item)
 
                           <tr>
-                            <td>{{$item->id ?? ""}}</td>
-                            <td>{{$item->name ?? ""}}</td>
-                            <td>{{$item->class_id ?? ""}}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->class_id  }}</td>
+                            <td>{{ $item->subject_id}}</td>
+                            <td>{{ $item->teacher_id}}</td>
                            
 
 
                              <td>
-                                <a href="{{ route('subject.edit',['id' => $item->id ]) }}" class="btn btn-secondary">Edit</a>
-                                <a href="{{ route('subject.delete',['id' => $item->id ]) }}" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('subjectteacher.edit',['id' => $item->id ]) }}" class="btn btn-secondary">Edit</a>
+                                <a href="{{ route('subjectteacher.delete',['id' => $item->id ]) }}" class="btn btn-danger">Delete</a>
                               </td>
                           @endforeach
                         </tbody>

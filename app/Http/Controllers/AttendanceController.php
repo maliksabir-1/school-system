@@ -30,6 +30,7 @@ class AttendanceController extends Controller
     public function store(Request $request)
     {
          $request->validate([
+        'student_id'=> 'required',
         'date' => 'required|date',
         'status' => 'required|in:present,absent',
         'remarks' => 'nullable|string|max:255',
@@ -37,6 +38,7 @@ class AttendanceController extends Controller
 
     // ✅ Create new attendance entry
     $users = new Attendance();
+    $users->student_id = $request->student_id;
     $users->date = $request->date;
     $users->status = $request->status;
     $users->remarks = $request->remarks;
@@ -70,6 +72,7 @@ class AttendanceController extends Controller
     {
         
         $request->validate([
+         'student_id'=> 'required',
         'date' => 'required|date',
         'status' => 'required|in:present,absent',
         'remarks' => 'nullable|string|max:255',
@@ -77,6 +80,7 @@ class AttendanceController extends Controller
 
     // ✅ Create new attendance entry
      $users= Attendance::where('id' , $id)->first();
+    $users->student_id = $request->student_id;
     $users->date = $request->date;
     $users->status = $request->status;
     $users->remarks = $request->remarks;

@@ -48,6 +48,18 @@
                     </div>
                    
                   </div>
+                  <div class="col-md-6 col-lg-4">
+                    <div class="form-group">
+                      <label for="class_id">Class</label>
+                      <select name="class_id" id="class_id" class="form-control" required>
+                        <option value="">-- Select Class --</option>
+                        @foreach ($classes as $class)
+                          <option value="{{ $class->id }}">{{ $class->name }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    </div>
+                  
                  
                   <div class="col-md-6 col-lg-4">
                    

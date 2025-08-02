@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\subject;
+use App\Models\Classes;
 
 class SubjectController extends Controller
 {
@@ -22,7 +23,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-         return view('subject.create');
+        $classes = Classes::all();
+         return view('subject.create',compact('classes'));
     }
 
     /**
@@ -32,6 +34,7 @@ class SubjectController extends Controller
     {
          $request->validate([
         'name' => 'required',
+        'class_id'=>'required',
         
         
     ]);
@@ -39,6 +42,7 @@ class SubjectController extends Controller
     // ✅ Create new attendance entry
     $users= new Subject();
     $users->name = $request->name;
+    $users->class_id = $request->class_id;
     
     
           
@@ -60,7 +64,8 @@ class SubjectController extends Controller
     public function edit(string $id)
     {
          $users= Subject::where('id' , $id)->first();
-         return view('subject.edit',compact('users'));
+         $classes = Classes::all();
+         return view('subject.edit',compact('users','classes'));
     }
 
     /**
@@ -70,6 +75,7 @@ class SubjectController extends Controller
     {
           $request->validate([
         'name' => 'required',
+        'class_id'=>'required',
         
         
     ]);
@@ -77,6 +83,7 @@ class SubjectController extends Controller
     // ✅ Create new attendance entry
     $users= Subject::where('id' , $id)->first();
     $users->name = $request->name;
+    $users->class_id = $request->class_id;
    
     
         

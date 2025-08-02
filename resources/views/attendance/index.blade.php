@@ -42,16 +42,28 @@
                 <thead>
                   <tr>
                     <th>ID</th>
+                    <th>student_id</th>
                     <th>Date</th>
                     <th>Status</th>
                     <th>Remarks</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
+                 <tfoot>
+                    <tr>
+                    <th>ID</th>
+                    <th>student_id</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Remarks</th>
+                    <th>Actions</th>
+                    </tr>
+                  </tfoot>
                 <tbody>
                   @foreach ($users as $item)
                   <tr>
                     <td>{{ $item->id }}</td>
+                    <td>{{$item->student_id}}</td>
                     <td>{{ $item->date }}</td>
                     <td>{{ ucfirst($item->status) }}</td>
                     <td>{{ $item->remarks }}</td>

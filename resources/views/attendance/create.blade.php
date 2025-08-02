@@ -58,6 +58,12 @@
                     <textarea name="remarks" id="remarks" class="form-control" rows="3" placeholder="Enter remarks (optional)"></textarea>
                   </div>
                 </div>
+                <div class="col-md-6 col-lg-4">
+                  <div class="form-group">
+                    <label for="student_id">Student ID</label>
+                    <input type="text" class="form-control" name="student_id" id="student_id" placeholder="Enter Student ID" required>
+                  </div>
+                </div>
 
                 <div class="col-12 mt-3">
                   <div class="card-action">

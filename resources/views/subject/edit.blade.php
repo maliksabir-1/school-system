@@ -45,8 +45,24 @@
                     <div class="form-group">
                       <label for="name">Subject</label>
                      <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" value="{{( $users->name) }}">
-                    </div>                   
-                  </div>                 
+                    </div> 
+                    </div> 
+                     <div class="col-md-6 col-lg-4">
+                      <div class="form-group">
+                        <div class="form-group">
+                      <label for="class_id">Class</label>
+                      <select name="class_id" id="class_id" class="form-control" required>
+                        <option value="">-- Select Class --</option>
+                        @foreach ($classes as $class)
+                          <option value="{{ $class->id }}" {{ $users->class_id == $class->id ? 'selected' : '' }}>
+                            {{ $class->name }}
+                          </option>
+                        @endforeach
+                      </select>
+                    </div>
+                      </div>
+                  </div>                  
+                                  
                   <div class="col-md-6 col-lg-4">                  
                     <div class="card-action">
                       <button type="submit" class="btn btn-success">Submit</button>

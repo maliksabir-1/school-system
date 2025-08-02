@@ -19,6 +19,7 @@ use App\Http\Controllers\FeepaymentController;
 use App\Http\Controllers\FeestructureController;
 use App\Http\Controllers\MarkController;
 use App\Http\Controllers\TimetableController;
+use App\Http\Controllers\ClasssubjectTeacherController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -155,3 +156,10 @@ Route::get('timetable/index',[TimetableController::class,'index'])->name('timeta
 Route::get('timetable/edit/{id}',[TimetableController::class,'edit'])->name('timetable.edit');
 Route::post('timetable/update/{id}',[TimetableController::class,'update'])->name('timetable.update');
 Route::get('timetable/delete/{id}',[TimetableController::class,'destroy'])->name('timetable.delete');
+
+Route::get('subjectteacher/create',[ClasssubjectTeacherController::class,'create'])->name('subjectteacher.create');
+Route::post('subjectteacher/post',[ClasssubjectTeacherController::class,'store'])->name('subjectteacher.post');
+Route::get('subjectteacher/index',[ClasssubjectTeacherController::class,'index'])->name('subjectteacher.index');
+Route::get('subjectteacher/edit/{id}',[ClasssubjectTeacherController::class,'edit'])->name('subjectteacher.edit');
+Route::post('subjectteacher/update/{id}',[ClasssubjectTeacherController::class,'update'])->name('subjectteacher.update');
+Route::get('subjectteacher/delete/{id}',[ClasssubjectTeacherController::class,'destroy'])->name('subjectteacher.delete');
